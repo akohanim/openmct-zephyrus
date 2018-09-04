@@ -1,0 +1,211 @@
+{
+    "name": "Example Spacecraft",
+    "key": "sc",
+    "measurements": [
+       
+        {
+            "name": "Received",
+            "key": "comms.recd",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "bytes",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Sent",
+            "key": "comms.sent",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "units": "bytes",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+
+        {
+            "name": "GPSlongitude",
+            "key": "GPS.long",
+            "values": [
+              {
+                "key": "value",
+                "name": "longitude",
+                "units": "degrees",
+                "format": "float"
+                
+              },
+
+              {
+                  "key": "utc",
+                  "source": "timestamp",
+                  "name": "Timestamp",
+                  "format": "utc",
+                  "hints": {
+                      "domain": 1
+                  }
+                }
+            ]
+        },
+
+
+        {
+            "name": "GPSlatitude",
+            "key": "GPS.lat",
+            "values": [
+              {
+                "key": "value",
+                "name": "latitude",
+                "units": "degrees",
+                "format": "float"
+                
+              },
+
+              {
+                  "key": "utc",
+                  "source": "timestamp",
+                  "name": "Timestamp",
+                  "format": "utc",
+                  "hints": {
+                      "domain": 1
+                  }
+                }
+            ]
+        },
+
+        {
+            "name": "GPSaltitude",
+            "key": "GPS.alt",
+            "values": [
+              {
+                "key": "value",
+                "name": "altitude",
+                "units": "meters",
+                "format": "float"
+                
+              },
+
+              {
+                  "key": "utc",
+                  "source": "timestamp",
+                  "name": "Timestamp",
+                  "format": "utc",
+                  "hints": {
+                      "domain": 1
+                  }
+                }
+            ]
+        },
+
+
+        {
+            "name": "humidity",
+            "key": "hum.data",
+            "values":[
+              {
+                "key": "value",
+                "name": "humidity",
+                "units": "percent",
+                "format": "float",
+                "hints": {
+                    "range": 1
+                  }
+              },
+
+        
+              {
+                  "key": "utc",
+                  "source": "timestamp",
+                  "name": "Timestamp",
+                  "format": "utc",
+                  "hints": {
+                      "domain": 1
+                  }
+                }
+            ]
+        },
+
+
+        {
+            "name": "atmosphericTemperature",
+            "key": "atm.data",
+            "values":[
+        {
+            "key": "value",
+            "name": "atmosphericTemperature",
+            "units": "℃",
+            "format": "float",
+            "hints": {
+                "range": 1
+              }
+          },
+
+          {
+            "key": "utc",
+            "source": "timestamp",
+            "name": "Timestamp",
+            "format": "utc",
+            "hints": {
+                "domain": 1
+            }
+          }
+        ]
+    },
+
+
+    {
+        "name": "AtmosphericPressure",
+        "key": "presh.data",
+        "values":[
+   
+            {
+                "key": "value",
+                "name": "pressure",
+                "units": "atm",
+                "format": "float",
+                "hints": {
+                    "range": 1
+                }
+              },
+            {
+                "key": "utc",
+                "source": "timestamp",
+                "name": "Timestamp",
+                "format": "utc",
+                "hints": {
+                 "domain": 1
+                 }
+            }
+                ]
+    }
+
+    ]
+}
