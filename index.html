@@ -77,7 +77,7 @@
                 openmct.time.clock('local', {start: -THIRTY_MINUTES, end: 0});
                 openmct.time.timeSystem('utc');
 
-
+                
                 openmct.install(DictionaryPlugin());
                 openmct.install(HistoricalTelemetryPlugin());
                 openmct.install(RealtimeTelemetryPlugin());
@@ -92,51 +92,109 @@
         <link rel="shortcut icon" href="platform/commonUI/general/res/images/favicons/favicon.ico">
     </head>
 
+    
+<!--   Balloon tracker from habhub
+     
+    <iframe width="1500px" height="400px" src="https://tracker.habhub.org/index.html?embed=1&hidelist=0&hidegraph=0&expandgraph=0&filter=" style="border:1px solid #00A3D3;border-radius:20px;"></iframe>
+
+-->
 
 
-    <body>
-        <title>Simple Map</title>
-        <meta name="viewport" content="initial-scale=1.0">
-        <meta charset="utf-8">
-        <style>
-          /* Always set the map height explicitly to define the size of the div
-           * element that contains the map. */
-          #map {
-            height: 100%;
-          }
-          /* Optional: Makes the sample page fill the window. */
-          html, body {
-            height: 50%;
-            margin: 0;
-            padding: 0;
-          }
-        </style>
-      </body>
-      <body>
-        <div id="map"></div>
-        <script>
-          var map;
-          function initMap() {
-            var myLatLng = {lat: 34.443889, lng: -116.966944};
-          
-            var map = new google.maps.Map(document.getElementById('map'), {
-              center: myLatLng,
-              zoom: 5,
-            });
-            
-          var myImage = './supplies.svg';
-           var marker = new google.maps.Marker({
+
+  <body>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /*  Makes the sample page portion of the window. */
+      html, body {
+        height: 50%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </body>
+  <body>
+    <div id="map"></div>
+    <script>
+      //pass gps values through parameters here ? nope  
+      function initMap(lat, lng) {//parameters originally empty
+
+        var zepherus = {lat: 34.443889, lng: -116.966944}; //need to pull values (var) here
  
-            position: myLatLng,
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: new google.maps.LatLng(34.443889,-116.966944),
+          mapTypeId: 'terrain'
+        });
+        var contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Zephyrus</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Zephyrus</b>, also referred to as <b>Zephyr</b>, is the Greek god of the west  ' +
+            'wind. The gentlest of the winds, Zephyrus is known as the fructifying wind,   '+
+            'the messenger of spring. It was thought that Zephyrus lived in a cave in Thrace '+
+            '.</p>'+
+            '<p> <a href="https://en.wikipedia.org/wiki/Anemoi#Zephyrus">'+
+            'https://en.wikipedia.org/wiki/Anemoi#Zephyrus/a> '+
+            '</div>'+
+            '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+        var myImage = './supplies.svg'; //drop pin image goes here 
+        var marker = new google.maps.Marker({
+
+            position: zepherus,
             map: map,
             icon: myImage,
+            title: 'zepherus'
+
+                }); 
+                marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+            marker.setMap( map );
+            UpdateLocation( map, marker );
+
+        }
+
+
+    
+        function UpdateLocation( map, marker ) {
+            setTimeout(() => {
+
+                var lang1 = Math.floor((Math.random() * 34) + 30); //set langitude connect to database
+                var lat1 = Math.floor((Math.random() * -117) + -110);  //set latitude 
+                //var alt1 =  Math.floor((Math.random() * 117) + 10);
+
+                marker.setPosition( new google.maps.LatLng( lat1, lang1 ) );
+                map.panTo( new google.maps.LatLng( lat1, lang1 ) );
+                UpdateLocation(map, marker);
+            }, 5000)
+            UpdateLocation();
+            }
+        
+            
+        
            
-             }); 
-          }
-        </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCer_DK3WyR-BvEfJnlG7UZD-oxOol8yNM&callback=initMap"
-        async defer></script>
-      </body>
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCer_DK3WyR-BvEfJnlG7UZD-oxOol8yNM&callback=initMap">
+    </script>
+  </body>
+</html>
+
+
 
 
 
