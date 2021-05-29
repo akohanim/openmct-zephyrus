@@ -18,7 +18,7 @@
     "painterro": "^0.2.65",
     "request": "^2.69.0",
     "vue": "^2.5.6",
-    "ws": "^6.0.0"
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "bower": "^1.7.7",
